@@ -211,6 +211,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MST_CUSTOMERController.cs" />
+    <Compile Include="Controllers\MST_LOCATIONController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -295,6 +296,11 @@
     <Content Include="Views\MST_CUSTOMER\Details.cshtml" />
     <Content Include="Views\MST_CUSTOMER\Edit.cshtml" />
     <Content Include="Views\MST_CUSTOMER\Index.cshtml" />
+    <Content Include="Views\MST_LOCATION\Create.cshtml" />
+    <Content Include="Views\MST_LOCATION\Delete.cshtml" />
+    <Content Include="Views\MST_LOCATION\Details.cshtml" />
+    <Content Include="Views\MST_LOCATION\Edit.cshtml" />
+    <Content Include="Views\MST_LOCATION\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

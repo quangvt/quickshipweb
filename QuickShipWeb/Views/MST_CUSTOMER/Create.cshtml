@@ -1,11 +1,12 @@
 ﻿@model QuickShipWeb.Models.MST_CUSTOMER
 
 @{
+    ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@Scripts.Render("~/bundles/jqueryval")
-    
+<h2>Create</h2>
+   
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
@@ -64,7 +65,8 @@
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="form-group">
+        @*Remove class="form-group" to clear space(high) of this div*@
+        <div>
             @Html.LabelFor(model => model.IsActive, htmlAttributes: new {  @class = "hidden"  })
             <div class="input-group">@Html.CheckBoxFor(model => model.IsActive,
                                     new { @class = "hidden", @checked = "checked" })</div>
@@ -76,25 +78,25 @@
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="form-group">
+        <div>
             @Html.LabelFor(model => model.Created_By, htmlAttributes: new { @class = "hidden" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Created_By, new { htmlAttributes = new { @class = "hidden", @Value = "tester" } })
             </div>
         </div>
-        <div class="form-group">
+        <div>
             @Html.LabelFor(model => model.Modified_By, htmlAttributes: new { @class = "hidden" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Modified_By, new { htmlAttributes = new { @class = "hidden", @Value = "tester" } })
             </div>
         </div>
-        <div class="form-group">
+        <div>
             @Html.LabelFor(model => model.Created_Date, htmlAttributes: new { @class = "hidden" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Created_Date, new { htmlAttributes = new { @class = "hidden", @Value = DateTime.Now } })
             </div>
         </div>
-        <div class="form-group">
+        <div>
             @Html.LabelFor(model => model.Modified_Date, htmlAttributes: new { @class = "hidden" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Modified_Date, new { htmlAttributes = new { @class = "hidden", @Value = DateTime.Now } })
@@ -112,3 +114,6 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
