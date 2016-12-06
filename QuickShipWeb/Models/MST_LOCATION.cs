@@ -14,7 +14,6 @@ namespace QuickShipWeb.Models
             SHP_DELIVERY_ORDER = new HashSet<SHP_DELIVERY_ORDER>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long Id { get; set; }
 
         [Required]

@@ -8,7 +8,6 @@ namespace QuickShipWeb.Models
 
     public partial class SYS_USER_ROLE
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long Id { get; set; }
 
         [Required]

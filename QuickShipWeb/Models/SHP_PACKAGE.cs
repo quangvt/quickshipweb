@@ -8,7 +8,6 @@ namespace QuickShipWeb.Models
 
     public partial class SHP_PACKAGE
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long Id { get; set; }
 
         [Required]

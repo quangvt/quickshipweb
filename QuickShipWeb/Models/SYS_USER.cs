@@ -14,7 +14,6 @@ namespace QuickShipWeb.Models
             SYS_USER_ROLE = new HashSet<SYS_USER_ROLE>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long Id { get; set; }
 
         [Required]

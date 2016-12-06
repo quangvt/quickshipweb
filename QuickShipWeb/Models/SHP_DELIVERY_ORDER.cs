@@ -14,7 +14,6 @@ namespace QuickShipWeb.Models
             SHP_PACKAGE = new HashSet<SHP_PACKAGE>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long Id { get; set; }
 
         [Required]

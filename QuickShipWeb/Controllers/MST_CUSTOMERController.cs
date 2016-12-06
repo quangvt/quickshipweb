@@ -46,7 +46,9 @@ namespace QuickShipWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Code,Name,Address,PIC,Phone,Email,IsActive,Description,Created_By,Created_Date,Modified_By,Modified_Date")] MST_CUSTOMER mST_CUSTOMER)
+        //public ActionResult Create([Bind(Include = "Id,Code,Name,Address,PIC,Phone,Email,IsActive,Description,Created_By,Created_Date,Modified_By,Modified_Date")] MST_CUSTOMER mST_CUSTOMER)
+        //public ActionResult Create([Bind(Include = "Code,Name,Address,PIC,Phone,Email,Description")] MST_CUSTOMER mST_CUSTOMER)
+        public ActionResult Create(MST_CUSTOMER mST_CUSTOMER)
         {
             if (ModelState.IsValid)
             {

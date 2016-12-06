@@ -14,7 +14,6 @@ namespace QuickShipWeb.Models
             SHP_DELIVERY_ORDER = new HashSet<SHP_DELIVERY_ORDER>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long Id { get; set; }
 
         [Required]
@@ -46,11 +45,13 @@ namespace QuickShipWeb.Models
         [StringLength(10)]
         public string Created_By { get; set; }
 
+        [Column(TypeName = "datetime2")]
         public DateTime Created_Date { get; set; }
 
         [StringLength(10)]
         public string Modified_By { get; set; }
 
+        [Column(TypeName = "datetime2")]
         public DateTime? Modified_Date { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
