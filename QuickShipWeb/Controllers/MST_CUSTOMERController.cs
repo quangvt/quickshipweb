@@ -84,6 +84,8 @@ namespace QuickShipWeb.Controllers
         {
             if (ModelState.IsValid)
             {
+                mST_CUSTOMER.Modified_By = "updater";
+                mST_CUSTOMER.Modified_Date = DateTime.Now;
                 db.Entry(mST_CUSTOMER).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
