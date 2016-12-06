@@ -8,12 +8,6 @@ namespace QuickShipWeb.Models
 
     public partial class MST_CUSTOMER
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public MST_CUSTOMER()
-        {
-            SHP_DELIVERY_ORDER = new HashSet<SHP_DELIVERY_ORDER>();
-        }
-
         public long Id { get; set; }
 
         [Required]
@@ -36,6 +30,7 @@ namespace QuickShipWeb.Models
         [StringLength(30)]
         public string Email { get; set; }
 
+        [Display(Name = "Active")]
         public bool IsActive { get; set; }
 
         [StringLength(255)]
@@ -43,18 +38,19 @@ namespace QuickShipWeb.Models
 
         [Required]
         [StringLength(10)]
+        [Display(Name="Created By")]
         public string Created_By { get; set; }
 
         [Column(TypeName = "datetime2")]
+        [Display(Name="Created Date")]
         public DateTime Created_Date { get; set; }
 
         [StringLength(10)]
+        [Display(Name="Modified By")]
         public string Modified_By { get; set; }
 
         [Column(TypeName = "datetime2")]
+        [Display(Name="Modified Date")]
         public DateTime? Modified_Date { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SHP_DELIVERY_ORDER> SHP_DELIVERY_ORDER { get; set; }
     }
 }

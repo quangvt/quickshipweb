@@ -22,16 +22,6 @@ namespace QuickShipWeb.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<MST_CUSTOMER>()
-                .HasMany(e => e.SHP_DELIVERY_ORDER)
-                .WithRequired(e => e.MST_CUSTOMER)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<MST_LOCATION>()
-                .HasMany(e => e.SHP_DELIVERY_ORDER)
-                .WithRequired(e => e.MST_LOCATION)
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<SHP_DELIVERY_ORDER>()
                 .Property(e => e.Begin_Amount)
                 .HasPrecision(12, 0);
@@ -43,6 +33,7 @@ namespace QuickShipWeb.Models
             modelBuilder.Entity<SHP_DELIVERY_ORDER>()
                 .HasMany(e => e.SHP_PACKAGE)
                 .WithRequired(e => e.SHP_DELIVERY_ORDER)
+                .HasForeignKey(e => e.Delivery_Order_Id)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<SYS_ROLE>()
