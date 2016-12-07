@@ -18,6 +18,7 @@ namespace QuickShipWeb.Models
 
         [Required]
         [StringLength(10)]
+        [MaxLength(10)]
         [Display(Name = "Delivery Order No.")]
         public string Delivery_Order { get; set; }
 
@@ -33,18 +34,22 @@ namespace QuickShipWeb.Models
 
         [Column(TypeName = "datetime2")]
         [Display(Name = "Create Order Date")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]  // format used by Html.EditorFor
         public DateTime? Create_Order_Date { get; set; }
 
         [Column(TypeName = "datetime2")]
         [Display(Name = "Assign Order Date")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]  // format used by Html.EditorFor
         public DateTime? Assign_Order_Date { get; set; }
 
         [Column(TypeName = "datetime2")]
         [Display(Name = "Onroad Order Date")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]  // format used by Html.EditorFor
         public DateTime? Onroad_Order_Date { get; set; }
 
         [Column(TypeName = "datetime2")]
         [Display(Name = "Finish Order Date")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]  // format used by Html.EditorFor
         public DateTime? Finish_Order_Date { get; set; }
 
         [Display(Name = "Begin Amount")]

@@ -212,6 +212,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MST_CUSTOMERController.cs" />
     <Compile Include="Controllers\MST_LOCATIONController.cs" />
+    <Compile Include="Controllers\SHP_DELIVERY_ORDERController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -301,6 +302,11 @@
     <Content Include="Views\MST_LOCATION\Details.cshtml" />
     <Content Include="Views\MST_LOCATION\Edit.cshtml" />
     <Content Include="Views\MST_LOCATION\Index.cshtml" />
+    <Content Include="Views\SHP_DELIVERY_ORDER\Create.cshtml" />
+    <Content Include="Views\SHP_DELIVERY_ORDER\Delete.cshtml" />
+    <Content Include="Views\SHP_DELIVERY_ORDER\Details.cshtml" />
+    <Content Include="Views\SHP_DELIVERY_ORDER\Edit.cshtml" />
+    <Content Include="Views\SHP_DELIVERY_ORDER\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

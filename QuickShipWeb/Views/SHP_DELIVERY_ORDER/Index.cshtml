@@ -1,0 +1,124 @@
+﻿@model IEnumerable<QuickShipWeb.Models.SHP_DELIVERY_ORDER>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Delivery_Order)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer_Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location_Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Create_Order_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Assign_Order_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Onroad_Order_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Finish_Order_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Begin_Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Final_Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Unit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Created_By)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Created_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Modified_By)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Modified_Date)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Delivery_Order)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer_Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Location_Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Create_Order_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Assign_Order_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Onroad_Order_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Finish_Order_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Begin_Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Final_Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Unit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Created_By)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Created_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Modified_By)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Modified_Date)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

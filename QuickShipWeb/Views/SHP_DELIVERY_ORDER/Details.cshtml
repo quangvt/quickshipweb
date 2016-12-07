@@ -1,0 +1,147 @@
+﻿@model QuickShipWeb.Models.SHP_DELIVERY_ORDER
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SHP_DELIVERY_ORDER</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Delivery_Order)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Delivery_Order)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location_Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location_Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Create_Order_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Create_Order_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Assign_Order_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Assign_Order_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Onroad_Order_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Onroad_Order_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Finish_Order_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Finish_Order_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Begin_Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Begin_Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Final_Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Final_Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Unit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Unit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created_By)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created_By)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modified_By)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modified_By)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modified_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modified_Date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
