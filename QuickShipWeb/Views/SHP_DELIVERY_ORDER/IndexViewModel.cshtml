@@ -1,0 +1,53 @@
+﻿@using QuickShipWeb.Models;
+@model QuickShipWeb.Models.CMB_DELIVERY_ORDER_PACKAGE
+
+@{
+    ViewBag.Title = "IndexViewModel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>IndexViewModel</h2>
+
+<p><b>Delivery Order List</b></p>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Code</th>
+        <th>Create Date</th>
+    </tr>
+    @foreach(SHP_DELIVERY_ORDER del_order in Model.Delivery_Orders)
+    {
+        <tr>
+            <td>@del_order.Id</td>
+            <td>@del_order.Delivery_Order</td>
+            <td>@del_order.Create_Order_Date</td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <table>
+                    <tr>
+                        <th>Id</th>
+                        <th>Code</th>
+                        <th>Name</th>
+                        <th>Deliver Order Id</th>
+                    </tr>
+
+                    @foreach (SHP_PACKAGE package in (from b in Model.Packages where b.Delivery_Order_Id == del_order.Id
+                                                     select b).ToList())
+                    {
+                        <tr>
+                            <td>@package.Id</td>
+                            <td>@package.Code</td>
+                            <td>@package.Name</td>
+                            <td>@package.Delivery_Order_Id</td>
+                        </tr>
+                    }
+                </table>
+            </td>
+        </tr>
+    }
+</table>
+
+<p><b>Package List</b></p>
+

@@ -32,6 +32,7 @@ namespace QuickShipWeb.Models
         public string Created_By { get; set; }
 
         [Display(Name = "Created Date")]
+        [Column(TypeName = "datetime2")]
         public DateTime Created_Date { get; set; }
 
         [StringLength(10)]
@@ -39,6 +40,7 @@ namespace QuickShipWeb.Models
         public string Modified_By { get; set; }
 
         [Display(Name = "Modified Date")]
+        [Column(TypeName = "datetime2")]
         public DateTime? Modified_Date { get; set; }
 
         public virtual SHP_DELIVERY_ORDER SHP_DELIVERY_ORDER { get; set; }

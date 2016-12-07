@@ -20,6 +20,15 @@ namespace QuickShipWeb.Controllers
             return View(db.SHP_DELIVERY_ORDER.ToList());
         }
 
+        public ActionResult IndexViewModel()
+        {
+            ViewBag.Message = "Model View - Combine Multiple Model";
+
+            CMB_DELIVERY_ORDER_PACKAGE cmb = GetDeliveryOrderAndPackage();
+
+            return View(cmb);
+        }
+
         // GET: SHP_DELIVERY_ORDER/Details/5
         public ActionResult Details(long? id)
         {
@@ -52,6 +61,7 @@ namespace QuickShipWeb.Controllers
         {
             if (ModelState.IsValid)
             {
+                sHP_DELIVERY_ORDER.Status = 1; // Created New
                 db.SHP_DELIVERY_ORDER.Add(sHP_DELIVERY_ORDER);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -115,6 +125,29 @@ namespace QuickShipWeb.Controllers
             db.SHP_DELIVERY_ORDER.Remove(sHP_DELIVERY_ORDER);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+
+        private CMB_DELIVERY_ORDER_PACKAGE GetDeliveryOrderAndPackage() {
+            CMB_DELIVERY_ORDER_PACKAGE cmb_pacakges = new CMB_DELIVERY_ORDER_PACKAGE();
+
+            List<SHP_DELIVERY_ORDER> list_del_orders = db.SHP_DELIVERY_ORDER.ToList();
+
+            cmb_pacakges.Delivery_Orders = list_del_orders;
+
+            List<SHP_PACKAGE> list_packages = new List<SHP_PACKAGE>();
+
+            foreach (SHP_DELIVERY_ORDER del_order in list_del_orders)
+            {
+                List<SHP_PACKAGE> lst = (from b in db.SHP_PACKAGE
+                                        where b.Delivery_Order_Id == del_order.Id
+                                        select b).ToList();
+                list_packages.AddRange(lst);
+            }
+
+            cmb_pacakges.Packages = list_packages;
+
+            return cmb_pacakges;
         }
 
         protected override void Dispose(bool disposing)

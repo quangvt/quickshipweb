@@ -213,6 +213,7 @@
     <Compile Include="Controllers\MST_CUSTOMERController.cs" />
     <Compile Include="Controllers\MST_LOCATIONController.cs" />
     <Compile Include="Controllers\SHP_DELIVERY_ORDERController.cs" />
+    <Compile Include="Controllers\SHP_PACKAGEController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -222,6 +223,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MST_CUSTOMER.cs" />
     <Compile Include="Models\MST_LOCATION.cs" />
+    <Compile Include="Models\CMB_DELIVERY_ORDER_PACKAGE.cs" />
     <Compile Include="Models\SHP_DELIVERY_ORDER.cs" />
     <Compile Include="Models\SHP_PACKAGE.cs" />
     <Compile Include="Models\SYS_ROLE.cs" />
@@ -307,6 +309,12 @@
     <Content Include="Views\SHP_DELIVERY_ORDER\Details.cshtml" />
     <Content Include="Views\SHP_DELIVERY_ORDER\Edit.cshtml" />
     <Content Include="Views\SHP_DELIVERY_ORDER\Index.cshtml" />
+    <Content Include="Views\SHP_DELIVERY_ORDER\IndexViewModel.cshtml" />
+    <Content Include="Views\SHP_PACKAGE\Create.cshtml" />
+    <Content Include="Views\SHP_PACKAGE\Delete.cshtml" />
+    <Content Include="Views\SHP_PACKAGE\Details.cshtml" />
+    <Content Include="Views\SHP_PACKAGE\Edit.cshtml" />
+    <Content Include="Views\SHP_PACKAGE\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
