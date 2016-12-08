@@ -1,0 +1,85 @@
+﻿@using QuickShipWeb.Models;
+@model QuickShipWeb.Models.CMB_DELIVERY_ORDER_PACKAGE
+
+@{
+    ViewBag.Title = "DetailsViewModel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Delivery Order Information</h4>
+<hr />
+<table>
+    <tr>
+        <th>Delivery_Order</th>
+        <th>Customer_Code</th>
+        <th>Location_Code</th>
+        <th>Create_Order_Date</th>
+        <th>Assign_Order_Date</th>
+        <th>Onroad_Order_Date</th>
+        <th>Finish_Order_Date</th>
+        <th>Begin_Amount</th>
+        <th>Final_Amount</th>
+        <th>Status</th>
+        <th>Unit</th>
+        <th>Description</th>
+        <th>Created_By</th>
+        <th>Created_Date</th>
+        <th>Modified_By</th>
+        <th>Modified_Date</th>
+    </tr>
+    <tr>
+        <td>@Model.Delivery_Orders[0].Delivery_Order</td>
+        <td>@Model.Delivery_Orders[0].Customer_Code</td>
+        <td>@Model.Delivery_Orders[0].Location_Code</td>
+        <td>@Model.Delivery_Orders[0].Create_Order_Date</td>
+        <td>@Model.Delivery_Orders[0].Assign_Order_Date</td>
+        <td>@Model.Delivery_Orders[0].Onroad_Order_Date</td>
+        <td>@Model.Delivery_Orders[0].Finish_Order_Date</td>
+        <td>@Model.Delivery_Orders[0].Begin_Amount</td>
+        <td>@Model.Delivery_Orders[0].Final_Amount</td>
+        <td>@Model.Delivery_Orders[0].Status</td>
+        <td>@Model.Delivery_Orders[0].Unit</td>
+        <td>@Model.Delivery_Orders[0].Description</td>
+        <td>@Model.Delivery_Orders[0].Created_By</td>
+        <td>@Model.Delivery_Orders[0].Created_Date</td>
+        <td>@Model.Delivery_Orders[0].Modified_By</td>
+        <td>@Model.Delivery_Orders[0].Modified_Date</td>
+    </tr>
+</table>
+
+<h4>Packages</h4>
+<hr />
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Description</th>
+        <th>Created_By</th>
+        <th>Created_Date</th>
+        <th>Modified_By</th>
+        <th>Modified_Date</th>
+    </tr>
+    @foreach (SHP_PACKAGE package in Model.Packages)
+    {
+        <tr>
+            <td>@package.Id</td>
+            <td>@package.Code</td>
+            <td>@package.Name</td>
+            <td>@package.Status</td>
+            <td>@package.Description</td>
+            <td>@package.Created_By</td>
+            <td>@package.Created_Date</td>
+            <td>@package.Modified_By</td>
+            <td>@package.Modified_Date</td>
+        </tr>
+    }
+</table>
+
+<p>
+    @Html.ActionLink("Edit", "EditViewModel", new { id = Model.Delivery_Orders[0].Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+

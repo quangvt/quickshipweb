@@ -309,12 +309,15 @@
     <Content Include="Views\SHP_DELIVERY_ORDER\Details.cshtml" />
     <Content Include="Views\SHP_DELIVERY_ORDER\Edit.cshtml" />
     <Content Include="Views\SHP_DELIVERY_ORDER\Index.cshtml" />
-    <Content Include="Views\SHP_DELIVERY_ORDER\IndexViewModel.cshtml" />
     <Content Include="Views\SHP_PACKAGE\Create.cshtml" />
     <Content Include="Views\SHP_PACKAGE\Delete.cshtml" />
     <Content Include="Views\SHP_PACKAGE\Details.cshtml" />
     <Content Include="Views\SHP_PACKAGE\Edit.cshtml" />
     <Content Include="Views\SHP_PACKAGE\Index.cshtml" />
+    <Content Include="Views\SHP_DELIVERY_ORDER\DetailsViewModel.cshtml" />
+    <Content Include="Views\SHP_DELIVERY_ORDER\EditPackage.cshtml" />
+    <Content Include="Views\SHP_DELIVERY_ORDER\DeletePackage.cshtml" />
+    <Content Include="Views\SHP_DELIVERY_ORDER\CreateViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

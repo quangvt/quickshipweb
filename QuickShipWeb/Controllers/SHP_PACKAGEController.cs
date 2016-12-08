@@ -48,8 +48,12 @@ namespace QuickShipWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Code,Name,Delivery_Order_Id,Status,Description,Created_By,Created_Date,Modified_By,Modified_Date")] SHP_PACKAGE sHP_PACKAGE)
+        public ActionResult Create(SHP_PACKAGE sHP_PACKAGE)
         {
+            sHP_PACKAGE.Status = 1;
+            sHP_PACKAGE.Created_By = "tester";
+            sHP_PACKAGE.Created_Date = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 db.SHP_PACKAGE.Add(sHP_PACKAGE);
