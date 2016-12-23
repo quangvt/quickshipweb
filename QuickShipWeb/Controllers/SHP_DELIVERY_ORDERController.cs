@@ -23,6 +23,15 @@ namespace QuickShipWeb.Controllers
             return View(cmb);
         }
 
+        public ActionResult Index2()
+        {
+            ViewBag.Message = "Index2";
+
+            CMB_DELIVERY_ORDER_PACKAGE cmb = GetDeliveryOrdersAndPackages();
+
+            return View("Index2", cmb);
+        }
+
         // GET: SHP_DELIVERY_ORDER/Details/5
         public ActionResult Details(long? id)
         {
