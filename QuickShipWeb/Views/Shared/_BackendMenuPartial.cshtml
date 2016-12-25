@@ -1,0 +1,14 @@
+﻿@using (Html.BeginForm("Index", "Search", FormMethod.Post, new { @class = "navbar-form navbar-left", role = "search" }))
+{
+    <div class="form-group">
+        @Html.TextBox("searchquery", "", new
+   {
+       @id = "searchquery",
+       @class = "form-control input-sm",
+       placeholder = "Search"
+   })
+        @Html.Hidden("fromcontroller", @ViewContext.RouteData.
+       Values["controller"], new { @id = "fromcontroller" })
+    </div>
+    <button type="submit" class="btn btn-default btn-xs">GO</button>
+}

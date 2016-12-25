@@ -10,54 +10,59 @@
 
 <p><b>Delivery Order Information</b></p>
 
-<table>
+<table class="table table-bordered table-striped table-hover">
     
     @foreach (SHP_DELIVERY_ORDER del_order in Model.Delivery_Orders)
     {
-        <tr>
-            <th>Id</th>
-            <th>Code</th>
-            <th>Create Date</th>
-            <th></th>
-        </tr>
-        <tr>
-            <td>@del_order.Id</td>
-            <td>@del_order.Delivery_Order</td>
-            <td>@del_order.Create_Order_Date</td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = del_order.Id }) |
-                @Html.ActionLink("Details", "DetailsViewModel", new { id = del_order.Id }) |
-                @Html.ActionLink("Delete", "DeleteViewModel", new { id = del_order.Id })
-            </td>
-        </tr>
-        <tr>
-            <td colspan="4">
-                <table>
-                    <tr>
-                        <th>Id</th>
-                        <th>Code</th>
-                        <th>Name</th>
-                        <th>Deliver Order Id</th>
-                        <th></th>
-                    </tr>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Code</th>
+                <th>Create Date</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@del_order.Id</td>
+                @*<td>@del_order.Delivery_Order</td>*@
+                <td>@Html.DisplayFor(modelItem => del_order.Delivery_Order)</td>
+                <td>@del_order.Create_Order_Date</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = del_order.Id }) |
+                    @Html.ActionLink("Details", "DetailsViewModel", new { id = del_order.Id }) |
+                    @Html.ActionLink("Delete", "DeleteViewModel", new { id = del_order.Id })
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <table>
+                        <tr>
+                            <th>Id</th>
+                            <th>Code</th>
+                            <th>Name</th>
+                            <th>Deliver Order Id</th>
+                            <th></th>
+                        </tr>
 
-                    @foreach (SHP_PACKAGE package in (from b in Model.Packages where b.Delivery_Order_Id == del_order.Id
+                        @foreach (SHP_PACKAGE package in (from b in Model.Packages where b.Delivery_Order_Id == del_order.Id
                                                      select b).ToList())
                     {
-                        <tr>
-                            <td>@package.Id</td>
-                            <td>@package.Code</td>
-                            <td>@package.Name</td>
-                            <td>@package.Delivery_Order_Id</td>
-                            <td>
-                                @Html.ActionLink("Edit", "EditPackage", new { id = package.Id }) |
-                                @Html.ActionLink("Delete", "DeletePackage", new { id = package.Id })
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>@package.Id</td>
+                        <td>@package.Code</td>
+                        <td>@package.Name</td>
+                        <td>@package.Delivery_Order_Id</td>
+                        <td>
+                            @Html.ActionLink("Edit", "EditPackage", new { id = package.Id }) |
+                            @Html.ActionLink("Delete", "DeletePackage", new { id = package.Id })
+                        </td>
+                    </tr>
                     }
-                </table>
-            </td>
-        </tr>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
     }
 </table>
 

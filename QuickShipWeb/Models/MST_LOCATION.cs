@@ -22,6 +22,7 @@ namespace QuickShipWeb.Models
         public bool IsActive { get; set; }
 
         [StringLength(255)]
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
         [Required]

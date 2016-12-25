@@ -1,0 +1,15 @@
+﻿@model QuickShipWeb.Models.MST_LOCATION
+
+<div class="container">
+    <div class="row">
+        <h3>Our Team</h3>
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <img src="@Url.Content("~/Images/employees/" + item.ID + ".png")" alt="@item.ID" class="img-circle img-responsive" />
+                <h3>display name here <small>display title here</small></h3>
+                <p>display notes here</p>
+            </div>
+        }
+    </div>
+</div>
