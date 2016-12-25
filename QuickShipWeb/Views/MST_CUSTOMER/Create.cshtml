@@ -50,7 +50,10 @@
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-10 input-group">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-phone-alt"></span>
+                </span>
                 @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control",
                     placeholder = "84982123123" } })
                 @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
@@ -58,10 +61,10 @@
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="input-group">
-                <span class="input-group-addon">@@</span>
+            <div class="col-md-10 input-group">
                 @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control",
                     placeholder = "nguyenvana@gmail.com" } })
+                <span class="input-group-addon">@@</span>
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -107,6 +110,47 @@
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                    <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#" id="savenew">Save & New</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" id="duplicate">Duplicate</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <h4 id="progressbarTitle">Basic Progressbar</h4>
+        <div class="progress progress-striped active">
+@*        <div class="progress">*@
+            @*progress-bar-""/success/info/warning/danger*@
+            @*<div class="progress-bar" role="progressbar" aria-valuenow="80"
+                 aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
+                <span class="sr-only">x% Complete</span>
+                text here x%
+            </div>*@
+            <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                 id="start"></div>
+        </div>
+        <button type="button" id="start" class="btn btn-primary btn-sm">Save</button>
+        @*dynamically updating the progress bar's percentage page71*@
+
+        <div class="alert alert-success alert-dismissible" @*role="alert"*@>
+            <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+            </button>
+            <strong>Success. You have successfully save the file.</strong>
+        </div>
+        <div class="alert alert-info"><strong>Info. Something has just happened.</strong></div>
+        <div class="alert alert-warning"><strong>Warning! The file size is too big.</strong></div>
+        <div class="alert alert-danger"><strong>Danger! The file could not be saved.</strong></div>
     </div>
 }
     
@@ -116,4 +160,22 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+<script type="text/javascript" language="javascript">
+        $("#start").click(function () {
+            $(".progress-bar").width('0%');
+            var progressNotifier = $.connection.progressbarHub;
+            progressNotifier.client.sendMessage = function (message) {
+                updateProgress(message);
+            };
+
+            $.connection.hub.start().done(function () {
+                progressNotifier.server.sendProgress();
+            });
+        });
+
+        function updateProgress(message) {
+            $(".progress-bar").width(message);
+            $("#progressbarTitle").html(message + ' Complete');
+        }
+</script>
 }
