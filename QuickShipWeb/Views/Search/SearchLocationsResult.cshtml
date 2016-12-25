@@ -1,0 +1,19 @@
+﻿@model IEnumerable<QuickShipWeb.Models.MST_LOCATION>
+@{
+    ViewBag.Title = "Location Search Results";
+    Layout = "~/Views/Shared/_Layout3.cshtml";
+}
+
+<div class="container">
+    <div class="page-header">
+        <h1>Location Results <small>Results for your search term: "@ViewBag.SearchQuery"</small></h1>
+    </div>
+    <ul class="list-group">
+        @foreach (var item in Model)
+        {
+            <a href="@Url.Action("Edit", "MST_LOCATION", new { id = @item.Id })" class="list-group-item">
+                @item.Name <span class="badge">@item.Code</span></a>
+        }
+    </ul>
+</div>
+

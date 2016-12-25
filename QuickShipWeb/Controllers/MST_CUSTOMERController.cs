@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using QuickShipWeb.Models;
+using PagedList;
 
 namespace QuickShipWeb.Controllers
 {
@@ -14,11 +15,58 @@ namespace QuickShipWeb.Controllers
     {
         private CodeFirstDBContext db = new CodeFirstDBContext();
 
-        // GET: MST_CUSTOMER
-        public ActionResult Index()
+        //// GET: MST_CUSTOMER
+        //public ActionResult Index()
+        //{
+        //    return View(db.MST_CUSTOMER.ToList());
+        //}
+
+        //public ActionResult Index(int? page)
+        //{
+        //    var models = db.MST_CUSTOMER.OrderBy(p => p.Name);
+        //    int pageSize = 5;
+        //    int pageNumber = (page ?? 1);
+        //    return View(models.ToPagedList(pageNumber, pageSize));
+        //}
+
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(db.MST_CUSTOMER.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "cust_name_desc" : "";
+
+            if (searchString != null)
+            {
+                page = 1;
+            } else
+            {
+                searchString = currentFilter;
+            }
+            ViewBag.CurrentFilter = searchString;
+
+            var customer = from c in db.MST_CUSTOMER
+                           select c;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                customer = customer.Where(c => c.Name.Contains(searchString)
+                || c.Code.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "cust_name_desc":
+                    customer = customer.OrderByDescending(c => c.Name);
+                    break;
+                default:
+                    customer = customer.OrderBy(c => c.Code);
+                    break;
+            }
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(customer.ToPagedList(pageNumber, pageSize));
         }
+
 
         // GET: MST_CUSTOMER/Details/5
         public ActionResult Details(long? id)

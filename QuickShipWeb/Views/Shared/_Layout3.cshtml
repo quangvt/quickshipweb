@@ -40,9 +40,17 @@
         </div>
     </div>
 
-
-
     <div class="container body-content">
+        <hr />
+        <hr/>
+        <div>
+            <ol class="breadcrumb">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("Customer", "Index", "MST_CUSTOMER")</li>
+                <li class="active">TestBreadcumb</li>
+            </ol>
+        </div>
+
         @RenderBody()
         <hr />
         <footer>

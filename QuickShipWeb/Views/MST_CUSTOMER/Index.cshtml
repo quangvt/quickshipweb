@@ -1,4 +1,7 @@
-﻿@model IEnumerable<QuickShipWeb.Models.MST_CUSTOMER>
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<QuickShipWeb.Models.MST_CUSTOMER>
+@*@model IEnumerable<QuickShipWeb.Models.MST_CUSTOMER>*@
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Index";
@@ -6,29 +9,39 @@
 }
 
 <h2>Index</h2>
+
+@using (Html.BeginForm("Index", "MST_CUSTOMER", "FormMethod.Get")) {
+    <p>
+        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
+
 <div class="table-responsive">
     <table class="table table-striped table-bordered table-hover table-condensed">
         <tr class="row">
-            <th class="col-md-1">
-                @Html.DisplayNameFor(model => model.Code)
+            <th class="col-md-1">Code
+                @*@Html.DisplayNameFor(model => model.Code)*@
             </th>
             <th class="col-md-2">
-                @Html.DisplayNameFor(model => model.Name)
+                @*@Html.DisplayNameFor(model => model.Name)*@
+                @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm,
+           currentFilter = ViewBag.CurrentFilter })
             </th>
-            <th class="col-md-2">
-                @Html.DisplayNameFor(model => model.Address)
+            <th class="col-md-2">Address
+                @*@Html.DisplayNameFor(model => model.Address)*@
             </th>
-            <th class="col-md-2">
-                @Html.DisplayNameFor(model => model.PIC)
+            <th class="col-md-2">PIC
+                @*@Html.DisplayNameFor(model => model.PIC)*@
             </th>
-            <th class="col-md-1">
-                @Html.DisplayNameFor(model => model.Phone)
+            <th class="col-md-1">Phone
+                @*@Html.DisplayNameFor(model => model.Phone)*@
             </th>
-            <th class="col-md-1">
-                @Html.DisplayNameFor(model => model.Email)
+            <th class="col-md-1">Email
+                @*@Html.DisplayNameFor(model => model.Email)*@
             </th>
-            <th class="col-md-1">
-                @Html.DisplayNameFor(model => model.Description)
+            <th class="col-md-1">Description
+                @*@Html.DisplayNameFor(model => model.Description)*@
             </th>
             <th class="col-md-2">
             </th>
@@ -67,6 +80,10 @@
         }
 
     </table>
+    <div>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    </div>
+
 </div>
 
 <p>

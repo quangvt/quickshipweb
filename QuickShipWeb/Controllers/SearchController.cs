@@ -19,7 +19,7 @@ namespace QuickShipWeb.Controllers
                 case "MST_CUSTOMER":
                     return RedirectToAction("SearchCustomersResult", new { query = searchquery });
                 case "MST_LOCATION":
-                    return RedirectToAction("SearchLocationResult", new { query = searchquery });
+                    return RedirectToAction("SearchLocationsResult", new { query = searchquery });
             }
             return View();
         }
