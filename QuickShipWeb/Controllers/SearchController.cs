@@ -30,7 +30,7 @@ namespace QuickShipWeb.Controllers
             var results = db.MST_CUSTOMER.Where(p => p.Name.Contains(query)
             || p.Email.Contains(query)
             || p.Description.Contains(query)).ToList();
-            return View(results);
+            return View("MST_CUSTOMER\\Index", results);
         }
 
         public ActionResult SearchLocationsResult(string query)
