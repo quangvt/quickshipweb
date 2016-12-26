@@ -243,6 +243,8 @@
     <Compile Include="Models\MST_CUSTOMER.cs" />
     <Compile Include="Models\MST_LOCATION.cs" />
     <Compile Include="Models\CMB_DELIVERY_ORDER_PACKAGE.cs" />
+    <Compile Include="Models\MST_REGION.cs" />
+    <Compile Include="Models\MST_ZONE.cs" />
     <Compile Include="Models\SHP_DELIVERY_ORDER.cs" />
     <Compile Include="Models\SHP_PACKAGE.cs" />
     <Compile Include="Models\SYS_ROLE.cs" />
@@ -349,6 +351,7 @@
     <Content Include="Views\Shared\_Layout3.cshtml" />
     <Content Include="Views\Shared\_BackendMenuPartial.cshtml" />
     <Content Include="Views\Search\SearchLocationsResult.cshtml" />
+    <Content Include="Views\Shared\Regions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

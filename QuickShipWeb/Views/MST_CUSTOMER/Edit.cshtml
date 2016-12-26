@@ -80,8 +80,43 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", row = "3" } })
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control",
+           row = "3" } })
             @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ZoneId, htmlAttributes: new { @class = "control-label col-md-2"})
+        @Html.HiddenFor(model => model.ZoneId)
+        <div class="col-md-10">
+            <div id="zonedropdown" class="dropdown">
+                <button id="zonebutton" class="btn btn-sm btn-info"
+                        data-toggle="dropdown">@Model.ZoneId</button>
+                <ul class="dropdown-menu">
+                    @foreach (var item in ViewBag.ZoneId)
+                    {
+                        <li><a href="#" tabindex="-1" data-value="@item.Value">@item.Text</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.RegionId, new { @class = 
+       "control-label col-md-2" })
+        @Html.HiddenFor(model => model.RegionId)
+        <div class="col-md-10">
+            <div id="regiondropdown" class="dropdown">
+                <button id="regionbutton" class="btn btn-sm btn-info"
+                        data-toggle="dropdown">@Model.RegionId</button>
+                <ul id="regions" class="dropdown-menu">
+                    @foreach (var item in ViewBag.RegionId)
+                    {
+                        <li><a href="#" tabindex="-1" data-value="@item.Value">@item.Text</a></li>
+                    }
+                </ul>
+            </div>
         </div>
     </div>
     
@@ -132,4 +167,27 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $('#zonedropdown li a').click(function () {
+            var $this = $(this);
+            var zone = $this.data('value');
+            var zoneName = $this.text();
+            $('#ZoneId').val(zone);
+            $.get("/MST_CUSTOMER/Regions", { zoneId: zone })
+            .done(function (data) {
+                $('#zonebutton').text(zoneName);
+                $('#regionbutton').text('Select Region');
+                $('#regions').html(data);
+            });
+        });
+
+        $('body').on("click", "#regions li a", function () {
+            var $this = $(this);
+            var region = $this.data('value');
+            var regionName = $this.text();
+            $('#RegionId').val(region);
+            $('#regionbutton').text(regionName);
+        });
+    </script>
 }

@@ -79,7 +79,7 @@ namespace QuickShipWeb.Controllers
             if (mST_CUSTOMER == null)
             {
                 return HttpNotFound();
-            }
+            }            
             return View(mST_CUSTOMER);
         }
 
@@ -109,6 +109,20 @@ namespace QuickShipWeb.Controllers
         }
 
         // GET: MST_CUSTOMER/Edit/5
+        //public ActionResult Edit(long? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    MST_CUSTOMER mST_CUSTOMER = db.MST_CUSTOMER.Find(id);
+        //    if (mST_CUSTOMER == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(mST_CUSTOMER);
+        //}
+
         public ActionResult Edit(long? id)
         {
             if (id == null)
@@ -120,6 +134,11 @@ namespace QuickShipWeb.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ZoneId = new SelectList(db.MST_ZONE, "Id", "Name", 
+                mST_CUSTOMER.ZoneId);
+            ViewBag.RegionId = new SelectList(db.MST_REGION.
+                Where(t => t.ZoneId == mST_CUSTOMER.ZoneId), "Id", "Name",
+                mST_CUSTOMER.RegionId);
             return View(mST_CUSTOMER);
         }
 
@@ -128,7 +147,7 @@ namespace QuickShipWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Code,Name,Address,PIC,Phone,Email,IsActive,Description,Created_By,Created_Date,Modified_By,Modified_Date")] MST_CUSTOMER mST_CUSTOMER)
+        public ActionResult Edit(MST_CUSTOMER mST_CUSTOMER)
         {
             if (ModelState.IsValid)
             {
@@ -139,6 +158,13 @@ namespace QuickShipWeb.Controllers
                 return RedirectToAction("Index");
             }
             return View(mST_CUSTOMER);
+        }
+
+        public PartialViewResult Regions(int zoneId)
+        {
+            ViewBag.RegionId = new SelectList(db.MST_REGION.
+                Where(t => t.ZoneId == zoneId), "Id", "Name");
+            return PartialView();
         }
 
         // GET: MST_CUSTOMER/Delete/5
