@@ -79,6 +79,11 @@
                        data-id="@item.Id" class="open-modal">
                         Delete
                     </a>
+                    <a href="#" data-toggle="tooltip" data-placement="top" data-original-title
+                       ="Welcome to the hell!"
+                       >
+                        World of monkeys
+                    </a>
                 </td>
             </tr>
         }
@@ -135,6 +140,10 @@
 
 @section Scripts {
     <script type="text/javascript">
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        })
+
         $(document).on("click", ".open-modal", function () {            
             var modalId = $(this).data('id');            
             $(".modal-dialog #id").val(modalId); //Div is using text for value

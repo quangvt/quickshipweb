@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Carousel";
+    Layout = "~/Views/Shared/_Layout3.cshtml";
+}
+
+<h2>Carousel</h2>
+<ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+</ol>
+
+<div class="carousel-inner">
+    <div class="item active">
+        <img src="@Url.Content("~/Images/slide1.jpg")" alt="First slide" />
+        <div class="container">
+            <div class="carousel-caption">
+                <h1>Unto all said together great in image.</h1>
+                <p>WOn't saw light to void brought fifth was brought god 
+                abundantly for you waters life seasons he after replenish beast.
+                Creapeth beginning.</p>
+                <p><a class="btn btn-lg btn-primary" 
+                      href="#" role="button">Read more</a></p>
+            </div>
+        </div>
+    </div>
+    <a class="left carousel-control" href="#myCarousel" data-
+       slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+    <a class="right carousel-control" href="#myCarousel" data-
+       slide="prev"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    <div id="myCarousel" class="carousel" data-ride="carousel" data-interval="1000"></div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $('#myCarousel').carousel({
+            interval: 1000
+        })
+    </script>
+}
