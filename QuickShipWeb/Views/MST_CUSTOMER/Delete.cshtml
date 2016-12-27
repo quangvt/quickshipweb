@@ -110,13 +110,49 @@
     
     </dl>
     
-    @using (Html.BeginForm()) {
+    @*@using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
     
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
             @Html.ActionLink("Back to List", "Index")
         </div>
-    }
+    }*@
+    <a href="#" data-toggle="modal" data-target="#deleteConfirmationModal">
+        Delete
+    </a>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<div class="modal fade" id="deleteConfirmationModal" tabindex="-1"
+     role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-
+                        dissmis="modal" aria-hidden="true">&time;</button>
+                <h4 class="modal-title">Deletion confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <p>You're about to delete the customer '@Model.Name'.</p>
+                <p>
+                    <strong>Are you sure you want to continue?</strong>
+                </p>
+                @using (Html.BeginForm("Delete", "MST_CUSTOMER",
+                            FormMethod.Post, new { @id = "delete-form", role = "form" })) {
+                    @Html.HiddenFor(m => m.Id)
+                    @Html.AntiForgeryToken()
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        onclick="$('#delete-form').submit();">Yes, 
+                delete this customer.</button>
+                <button type="button" class="btn btn-primary"
+                        data-dismiss="modal">No, do not delete.</button>
+            </div>
+        </div>
+    </div>
+
 </div>
 

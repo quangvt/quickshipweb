@@ -187,9 +187,13 @@ namespace QuickShipWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)
         {
-            MST_CUSTOMER mST_CUSTOMER = db.MST_CUSTOMER.Find(id);
-            db.MST_CUSTOMER.Remove(mST_CUSTOMER);
-            db.SaveChanges();
+            //MST_CUSTOMER mST_CUSTOMER = db.MST_CUSTOMER.Find(id);
+            var model = db.MST_CUSTOMER.FirstOrDefault(i => i.Id == id);
+            if (model != null)
+            {
+                db.MST_CUSTOMER.Remove(model);
+                db.SaveChanges();                
+            }            
             return RedirectToAction("Index");
         }
 
