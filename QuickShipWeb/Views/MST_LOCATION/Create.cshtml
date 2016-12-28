@@ -1,4 +1,7 @@
-﻿@model QuickShipWeb.Models.MST_LOCATION
+﻿@using QuickShipWeb.Helpers;
+@using QuickShipWeb.Helpers.Alerts;
+@using QuickShipWeb.Helpers.Panels;
+@model QuickShipWeb.Models.MST_LOCATION
 
 @{
     ViewBag.Title = "Create";
@@ -83,6 +86,22 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
+                <p>Creating Custom Helper</p>
+                @*@BootstrapHelpers.PrimaryButtonSmall("myButton", "My New Button")*@
+                @BootstrapHelpers.PrimaryButtonSmall("danger", "lg", "A Large button", "myLargeButton")
+                <p>By Static Method</p>
+                @ButtonHelper.Button("My Button", Enums.ButtonStyle.Warning, Enums.ButtonSize.Normal)
+                <p>By Extension Method</p>
+                @Html.BootstrapButton("My Button", Enums.ButtonStyle.Info, Enums.ButtonSize.Normal)
+                <p>Creating fluent HTML helper</p>
+                @Html.Alert("Core meltdown imminent").Danger().Dismissible()
+                <p>Creating self-closing helpers</p>
+                @using (Html.Panel("Title", Enums.PanelStyle.Success))
+                {
+                    <p>Hello World</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur aispiad lea</p>
+                }
+
             </div>
         </div>
     </div>

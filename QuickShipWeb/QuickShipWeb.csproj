@@ -235,6 +235,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Alerts\Alert.cs" />
+    <Compile Include="Helpers\Alerts\AlertFluent.cs" />
+    <Compile Include="Helpers\Alerts\AlertHelper.cs" />
+    <Compile Include="Helpers\Alerts\IAlert.cs" />
+    <Compile Include="Helpers\Alerts\IAlertFluent.cs" />
+    <Compile Include="Helpers\ButtonExtensions.cs" />
+    <Compile Include="Helpers\ButtonHelper.cs" />
+    <Compile Include="Helpers\Enums.cs" />
+    <Compile Include="Helpers\Panels\Panel.cs" />
+    <Compile Include="Helpers\Panels\PanelHelper.cs" />
     <Compile Include="Hubs\ProgressbarHub.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CodeFirstDBContext.cs" />
@@ -272,6 +282,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="App_Code\BootstrapHelpers.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
