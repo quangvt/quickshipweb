@@ -1,0 +1,50 @@
+﻿<#@ template language="C#" HostSpecific="True" #>
+<#@ output extension="cs" #>
+<#@ parameter type="System.String" name="ControllerName" #>
+<#@ parameter type="System.String" name="ControllerRootName" #>
+<#@ parameter type="System.String" name="Namespace" #>
+<#@ parameter type="System.String" name="AreaName" #>
+<#
+string routePrefix;
+if (String.IsNullOrEmpty(AreaName)) 
+{
+    routePrefix = ControllerRootName;
+}
+else
+{
+    routePrefix = AreaName + "/" + ControllerRootName;
+}
+#>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+// Begin Add New
+using QuickShipWeb.Models;
+using QuickShipWeb.Infrastructure;
+// End Add New
+
+namespace <#= Namespace #>
+{
+    public class <#= ControllerName #> : Controller
+    {
+		// Begin Add New
+		private readonly ApplicationDbContext _context;
+		private readonly ICurrentUser _currentUser;
+
+		public <#= ControllerName #>(ApplicationDbContext context,
+		ICurrentUser currentUser)
+		{
+			_context = context;
+			_currentUser = currentUser;
+		}
+		// End Add New
+
+        // GET: <#= routePrefix #>
+        public ActionResult Index()
+        {
+            return View();
+        }
+    }
+}
