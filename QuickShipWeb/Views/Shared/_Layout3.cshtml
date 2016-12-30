@@ -10,6 +10,30 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+    @*Datatables Style*@
+    @*<link rel="stylesheet" type="text/css" 
+          href="//cdn.datatables.net/1.10.0/css/jquery.dataTables.css" />*@
+    <link rel="stylesheet" type="text/css"
+          href=@Url.Content("~/Content/DataTables/css/jquery.dataTables.css") />
+    @*<link rel="stylesheet" type="text/css" 
+          href="//cdn.datatables.net/plug-ins/be7019ee387/integration/bootstrap/3/dataTables.bootstrap.css" />*@
+ <link rel="stylesheet" type="text/css"
+       href=@Url.Content("~/Content/DataTables/css/dataTables.bootstrap.css") />
+    @*ColReorder extenstion*@
+    @*<link rel="stylesheet" type="text/css" 
+          href="//cdn.datatables.net/colreorder/1.1.1/css/dataTables.colReorder.css">*@
+    <link rel="stylesheet" type="text/css"
+          href=@Url.Content("~/Content/DataTables/css/colReorder.dataTables.min.css") />
+    @*The ColVis extension*@
+    @*<link rel="stylesheet" type="text/css" 
+          href="//cdn.datatables.net/colvis/1.1.0/css/dataTables.colVis.css">*@
+    @*<link rel="stylesheet" type="text/css"
+          href=@Url.Cont*@ent("~/Content/DataTables/css/dataTables.colVis.css") />
+    @*TableTools*@
+    @*<link rel="stylesheet" type="text/css" 
+          href="//cdn.datatables.net/tabletools/2.2.1/css/dataTables.tableTools.css">*@
+    @*<link rel="stylesheet" type="text/css"
+          href=@Url.Content("~/Content/DataTables/css/dataTables.tableTools.css") />*@
     <!-- [if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -61,6 +85,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    <script src="~/hubs"></script>
+    @*<script src="~/hubs"></script>*@
 </body>
 </html>
