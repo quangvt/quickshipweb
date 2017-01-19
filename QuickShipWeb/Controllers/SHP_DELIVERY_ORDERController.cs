@@ -255,6 +255,33 @@ namespace QuickShipWeb.Controllers
             return cmb_package;
         }
 
+        public ActionResult LoadPackages(long id) {
+            var packages = GetPackages(id);
+            return PartialView("_ShpPackageListView", packages);
+        }
+
+        private IEnumerable<SHP_PACKAGE> GetPackages(long id)
+        {
+            var packages = db.SHP_PACKAGE
+                .Where(a => a.Delivery_Order_Id == id)
+                .OrderBy(a => a.Id);
+            return packages.ToList();
+        }
+
+        public ActionResult ALModalDetails(long? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            SHP_DELIVERY_ORDER sHP_DELIVERY_ORDER = db.SHP_DELIVERY_ORDER.Find(id);
+            if (sHP_DELIVERY_ORDER == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView("_Details", sHP_DELIVERY_ORDER);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

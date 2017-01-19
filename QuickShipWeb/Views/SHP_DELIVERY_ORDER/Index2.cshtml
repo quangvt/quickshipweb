@@ -25,7 +25,21 @@
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = del_order.Id }) |
                     @Html.ActionLink("Details", "DetailsViewModel", new { id = del_order.Id }) |
-                    @Html.ActionLink("Delete", "DeleteViewModel", new { id = del_order.Id })
+                    @Html.ActionLink("Delete", "DeleteViewModel", new { id = del_order.Id }) |
+                    @Ajax.ActionLink("Pack", "LoadPackages", new { id = del_order.Id },
+                    new AjaxOptions
+                    {
+                        UpdateTargetId = "listPackages",
+                        InsertionMode = InsertionMode.Replace,
+                        HttpMethod = "Get"
+                    }) |
+                    <button type="button" class="btn btn-info" data-toggle="modal" 
+                            data-target="#detailsDOModal">Details</button>
+                    | <a href="javascript:void(0);" data-id=del_order.Id 
+                         class="OpenDialog">myModal</a>
+                    @*Not Run 1*@
+                    @*| @Html.ActionLink("ALModalDetails", "ALModalDetails", null, 
+                        new { id = del_order.Id }, new { @class = "ALModalClass" })*@
                 </td>
             </tr>
         }
@@ -33,12 +47,71 @@
 </div>
 @*Detail Data = Packages Information of Delivery Order*@
 <p><b>Packages Information</b></p>
-@*@Html.Partial("_ShpPackageListView")*@
-@*<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-2">ID</div>
-        <div class="col-md-3">Code</div>
-        <div class="col-md-4">Create Date</div>
-        <div class="col-md-3"></div>
+<div id="listPackages"></div>
+@*Not Run 1*@
+@*<div id="ALModalPH"></div>*@
+@section Scripts {
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script>
+        $(function () {
+            $(".OpenDialog").click(function (e) {
+                $("myModal #id").val($(this).data("id"));
+                $("#myModal").modal("show");
+            });
+        });
+
+        // Not Run 1
+        //$(function () {
+        //    $('#ALModalPH').dialog({
+        //        autoOpen: false,
+        //        width: 400,
+        //        resizable: true,
+        //        modal: true
+        //    });
+
+        //    $('.ALModalClass').click(function () {
+        //        $('#ALModalPH').load(this.href, function () {
+        //            $(this).dialog('open');
+        //        });
+        //        return false;
+        //    })
+        //});
+    </script>
+}
+
+@*SHP_DELIVERY_PACKAGE Details Modal*@
+<div class="modal fade" id="detailsDOModal" role="dialog">
+    <div class="modal-dialog">
+        @*Modal content*@
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Details of Delivery Order</h4>
+            </div>
+            <div class="modal-body">
+                <p>Data go here</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
-</div>*@
+</div>
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        @*Modal content*@
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Details of Delivery Order</h4>
+            </div>
+            <div class="modal-body">
+                <p>Data go here</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
