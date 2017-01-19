@@ -235,6 +235,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers1\CustomAttribute.cs" />
     <Compile Include="Helpers\Alerts\Alert.cs" />
     <Compile Include="Helpers\Alerts\AlertFluent.cs" />
     <Compile Include="Helpers\Alerts\AlertHelper.cs" />
@@ -427,6 +428,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\slide1.jpg" />
+    <Content Include="Scripts\App\CustomValidators.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">

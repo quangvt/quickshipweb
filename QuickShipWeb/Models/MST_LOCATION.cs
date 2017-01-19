@@ -1,5 +1,6 @@
 namespace QuickShipWeb.Models
 {
+    using Helpers1;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -23,6 +24,7 @@ namespace QuickShipWeb.Models
 
         [StringLength(255)]
         [DataType(DataType.MultilineText)]
+        [MaxWords(3)]
         public string Description { get; set; }
 
         [Required]
