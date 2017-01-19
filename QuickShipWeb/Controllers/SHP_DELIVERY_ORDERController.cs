@@ -25,11 +25,13 @@ namespace QuickShipWeb.Controllers
 
         public ActionResult Index2()
         {
+            /*
             ViewBag.Message = "Index2";
-
             CMB_DELIVERY_ORDER_PACKAGE cmb = GetDeliveryOrdersAndPackages();
-
             return View("Index2", cmb);
+            */
+            var sHP_DELIVERY_ORDER = db.SHP_DELIVERY_ORDER;
+            return View(sHP_DELIVERY_ORDER.ToList());
         }
 
         // GET: SHP_DELIVERY_ORDER/Details/5

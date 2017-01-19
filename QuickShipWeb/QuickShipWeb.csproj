@@ -642,6 +642,7 @@
     <Content Include="Views\Common\Accordion.cshtml" />
     <Content Include="Views\Common\Carousel.cshtml" />
     <Content Include="Views\Shared\_Layout3_Old.cshtml" />
+    <Content Include="Views\SHP_DELIVERY_ORDER\_ShpPackageListView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -1,45 +1,44 @@
 ﻿@using QuickShipWeb.Models;
-@model QuickShipWeb.Models.CMB_DELIVERY_ORDER_PACKAGE
-
+@model IEnumerable<QuickShipWeb.Models.SHP_DELIVERY_ORDER>
 @{
     ViewBag.Title = "Index2";
-    Layout = "~/Views/Shared/_Layout3.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Index2</h2>
-
-<p><b>Delivery Order Information</b></p>
-
 @*Header Data = Delivery Order Information*@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-2">ID</div>
-        <div class="col-md-3">Code</div>
-        <div class="col-md-4">Create Date</div>
-        <div class="col-md-3"></div>
-    </div>
-    @foreach (SHP_DELIVERY_ORDER del_order in Model.Delivery_Orders)
-    {
-        <div class="row">
-            <div class="col-md-2">@del_order.Id</div>
-            <div class="col-md-3">@del_order.Delivery_Order</div>
-            <div class="col-md-4">@del_order.Create_Order_Date</div>
-            <div>
-                @Html.ActionLink("Edit", "Edit", new { id = del_order.Id }) |
-                @Html.ActionLink("Details", "DetailsViewModel", new { id = del_order.Id }) |
-                @Html.ActionLink("Delete", "DeleteViewModel", new { id = del_order.Id })
-            </div>
-        </div>
-    }
+<p><b>Delivery Order Information</b></p>
+<div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover">
+        <tr class="row">
+            <th class="col-md-2">ID</th>
+            <th class="col-md-3">Code</th>
+            <th class="col-md-4">Create Date</th>
+            <th class="col-md-3"></th>
+        </tr>
+        @foreach (SHP_DELIVERY_ORDER del_order in Model)
+        {
+            <tr class="row head">
+                <td class="col-md-2">@del_order.Id</td>
+                <td class="col-md-3">@del_order.Delivery_Order</td>
+                <td class="col-md-4">@del_order.Create_Order_Date</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = del_order.Id }) |
+                    @Html.ActionLink("Details", "DetailsViewModel", new { id = del_order.Id }) |
+                    @Html.ActionLink("Delete", "DeleteViewModel", new { id = del_order.Id })
+                </td>
+            </tr>
+        }
+    </table>
 </div>
-
 @*Detail Data = Packages Information of Delivery Order*@
-<div class="container-fluid">
+<p><b>Packages Information</b></p>
+@*@Html.Partial("_ShpPackageListView")*@
+@*<div class="container-fluid">
     <div class="row">
         <div class="col-md-2">ID</div>
         <div class="col-md-3">Code</div>
         <div class="col-md-4">Create Date</div>
         <div class="col-md-3"></div>
     </div>
-    
-</div>
+</div>*@
